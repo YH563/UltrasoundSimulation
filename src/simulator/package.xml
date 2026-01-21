@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>task_manager</name>
+  <name>simulator</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="1066948247@qq.com">yh_ros2</maintainer>
@@ -11,8 +11,9 @@
 
   <depend>rclcpp</depend>
   <depend>gazebo_ros</depend>
+  <!-- <depend>gazebo_plugins</depend> -->
   <depend>geometry_msgs</depend>
-  <depend>sensor_msgs</depend>
+  <depend>ultrasound_interfaces</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

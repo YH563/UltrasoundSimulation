@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(task_manager)
+project(simulator)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -9,8 +9,20 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(gazebo_ros REQUIRED)
+# find_package(gazebo_plugins REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(sensor_msgs REQUIRED)
+find_package(ultrasound_interfaces REQUIRED)
+
+install(
+  DIRECTORY launch/  # 源码中的 launch 目录
+  DESTINATION share/${PROJECT_NAME}/launch
+)
+
+# 安装URDF文件
+install(
+  DIRECTORY urdf/  # 源码中的 urdf 目录
+  DESTINATION share/${PROJECT_NAME}/urdf
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
