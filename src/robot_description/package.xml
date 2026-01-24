@@ -3,20 +3,22 @@
 <package format="3">
   <name>robot_description</name>
   <version>0.0.0</version>
-  <description>UR3e with ultrasound probe for ROS2 Humble + Gazebo Classic 11</description>
+  <description>Minimal package to display xArm6 in RViz</description>
   <maintainer email="1066948247@qq.com">yh_ros2</maintainer>
   <license>Apache-2.0</license>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
-  <depend>ur_description</depend>
-  <depend>gazebo_ros</depend>
-  <depend>controller_manager</depend>
-  <depend>robot_state_publisher</depend>
-  <depend>joint_state_publisher</depend>
-  <depend>xacro</depend>
-
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+
 
   <export>
     <build_type>ament_cmake</build_type>

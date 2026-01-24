@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="xarm6">
+  
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+  
+  <material name="gray">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+  
+  <material name="red">
+    <color rgba="1.0 0.0 0.0 1.0"/>
+  </material>
+  
+  <!-- 世界坐标系 -->
+  <link name="world"/>
+  
+  <!-- 基座 - 较大以便观察 -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/xarm6/visual/link_base.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+  
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <!-- 链接1 -->
+  <link name="link1">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/xarm6/visual/link1.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.267" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="50.0" velocity="3.14"/>
+  </joint>
+  
+  <!-- 链接2 -->
+  <link name="link2">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/xarm6/visual/link2.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="50.0" velocity="3.14"/>
+  </joint>
+  
+  <!-- 链接3 -->
+  <link name="link3">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/xarm6/visual/link3.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0.0535 -0.2845 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="32.0" velocity="3.14"/>
+  </joint>
+  
+  <!-- 链接4 -->
+  <link name="link4">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/xarm6/visual/link4.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <joint name="joint4" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz="0.0775 0.3425 0" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="32.0" velocity="3.14"/>
+  </joint>
+  
+  <!-- 链接5 -->
+  <link name="link5">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/xarm6/visual/link5.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <joint name="joint5" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="32.0" velocity="3.14"/>
+  </joint>
+  
+  <!-- 链接6 -->
+  <link name="link6">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/xarm6/visual/link6.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+  
+  <joint name="joint6" type="revolute">
+    <parent link="link5"/>
+    <child link="link6"/>
+    <origin xyz="0.076 0.097 0" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="20.0" velocity="3.14"/>
+  </joint>
+  
+  <!-- 末端执行器 - 明显标记 -->
+  <link name="flange">
+    <visual>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+  </link>
+  
+  <joint name="flange_joint" type="fixed">
+    <parent link="link6"/>
+    <child link="flange"/>
+    <origin xyz="0.15 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>
