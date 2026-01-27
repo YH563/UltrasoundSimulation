@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>dynamics_controller</name>
+  <name>kinematics_module</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="1066948247@qq.com">yh_ros2</maintainer>
@@ -9,13 +9,25 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>rclcppp</depend>
-  <depend>gazebo_ros</depend>
-  <depend>geometry_msgs</depend>
-  <depend>sensor_msgs</depend>
-
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+
+  <depend>rclcpp</depend>
+  <depend>pluginlib</depend>
+  <depend>Eigen3</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_kdl</depend>
+  <depend>sophus</depend>
+
+  <!-- MoveIt2 核心依赖 -->
+  <depend>moveit_core</depend>
+  <depend>moveit_ros_planning</depend>
+  <depend>moveit_kinematics</depend>
+
+  <!-- 机器人描述 -->
+  <depend>urdf</depend>
+  <depend>kdl_parser</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
